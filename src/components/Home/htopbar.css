@@ -1,0 +1,12 @@
+/* App.css */
+.nav-links-right {
+  flex-grow: 1;
+}
+
+.nav-links-right .nav-link {
+  margin-left: 10px; /* Ajusta este valor según sea necesario */
+}
+
+.logo1 {
+  margin-right: 10px;
+}

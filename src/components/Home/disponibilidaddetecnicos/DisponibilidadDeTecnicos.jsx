@@ -1,7 +1,25 @@
-import React from "react";
 import { Table } from "react-bootstrap";
 import Htopbar from "../Htopbar";
+import TecnicoService from "../../services/TecnicoService";
+import { useState, useEffect } from "react";
 const DisponibilidadDeTecnicos = () => {
+  const [tecnicos, setTecnicos] = useState([]);
+  useEffect(() => {
+    TecnicoService.listarTecnicos()
+      .then((response) => {
+        setTecnicos(response.data);
+      })
+      .catch((e) => {
+        console.log(e);
+      });
+  }, []);
+  //posiblemente luego usemos el useState para que se renderize al momento de que cambien las variables xd
+  const tecnicosDisponibles = tecnicos.filter(
+    (tecnico) => tecnico.disponibilidad
+  );
+  const tecnicosOcupados = tecnicos.filter(
+    (tecnico) => !tecnico.disponibilidad
+  );
   return (
     <>
       <Htopbar />
@@ -24,31 +42,20 @@ const DisponibilidadDeTecnicos = () => {
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>1</td>
-              <td>Juan Pérez</td>
-              <td>2024-06-15</td>
-              <td>EQP001</td>
-              <td>Producción</td>
-              <td>Alta</td>
-              <td>INC001</td>
-              <td>
-                <button className="btn btn-info">Ver Detalles</button>
-              </td>
-            </tr>
-
-            <tr>
-              <td>2</td>
-              <td>Maria González</td>
-              <td>2024-06-16</td>
-              <td>EQP002</td>
-              <td>Mantenimiento</td>
-              <td>Media</td>
-              <td>INC002</td>
-              <td>
-                <button className="btn btn-info">Ver Detalles</button>
-              </td>
-            </tr>
+            {tecnicosOcupados.map((tecnico) => (
+              <tr key={tecnico.id_tecnico}>
+                <td>{tecnico.id_tecnico}</td>
+                <td>{tecnico.nombre + tecnico.apellido_paterno}</td>
+                <td>{tecnico.nombre + tecnico.apellido_paterno}</td>
+                <td>{tecnico.nombre + tecnico.apellido_paterno}</td>
+                <td>{tecnico.incidencia}</td>
+                <td>{tecnico.incidencia}</td>
+                <td>{tecnico.incidencia}</td>
+                <td>
+                  <button className="btn btn-info">Ver Detalles</button>
+                </td>
+              </tr>
+            ))}
           </tbody>
         </Table>
         <h4 className="mb-4 tw-font-semibold tw-text-xl">
@@ -66,26 +73,18 @@ const DisponibilidadDeTecnicos = () => {
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>1</td>
-              <td>TEC001</td>
-              <td>Experto</td>
-              <td>25</td>
-              <td>4.5</td>
-              <td>
-                <button className="btn btn-info">Ver Detalles</button>
-              </td>
-            </tr>
-            <tr>
-              <td>2</td>
-              <td>TEC002</td>
-              <td>Regular</td>
-              <td>12</td>
-              <td>3.8</td>
-              <td>
-                <button className="btn btn-info">Ver Detalles</button>
-              </td>
-            </tr>
+            {tecnicosDisponibles.map((tecnico) => (
+              <tr key={tecnico.id_tecnico}>
+                <td>{tecnico.id_tecnico}</td>
+                <td>{tecnico.id_tecnico}</td>
+                <td>{tecnico.experiencia}</td>
+                <td>{tecnico.id_tecnico}</td>
+                <td>{tecnico.experiencia}</td>
+                <td>
+                  <button className="btn btn-info">Ver Detalles</button>
+                </td>
+              </tr>
+            ))}
           </tbody>
         </Table>
       </div>

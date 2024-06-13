@@ -35,7 +35,7 @@ const AsignarIncidencia = () => {
                 <th>Fecha</th>
                 <th>Hora</th>
                 <th>Id Equipo</th>
-                <th>Estado del Equipo</th>
+                <th>Equipo Afectado </th>
                 <th>Código del Equipo</th>
               </tr>
             </thead>

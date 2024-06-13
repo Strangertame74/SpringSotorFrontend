@@ -27,7 +27,7 @@ const DisponibilidadDeTecnicos = () => {
         <h1 className="mb-4 tw-text-center tw-text-4xl tw-font-bold">
           Disponibilidad de Técnicos
         </h1>
-        <h4 className="mb-4 tw-font-semibold tw-text-xl">Técnicos Ocupados</h4>
+        {/* <h4 className="mb-4 tw-font-semibold tw-text-xl">Técnicos Ocupados</h4>
         <Table striped bordered hover>
           <thead>
             <tr>
@@ -45,7 +45,7 @@ const DisponibilidadDeTecnicos = () => {
             {tecnicosOcupados.map((tecnico) => (
               <tr key={tecnico.id_tecnico}>
                 <td>{tecnico.id_tecnico}</td>
-                <td>{tecnico.nombre + tecnico.apellido_paterno}</td>
+                <td>{`${tecnico.nombre} ${tecnico.apellido_paterno}`}</td>
                 <td>{tecnico.nombre + tecnico.apellido_paterno}</td>
                 <td>{tecnico.nombre + tecnico.apellido_paterno}</td>
                 <td>{tecnico.incidencia}</td>
@@ -57,7 +57,7 @@ const DisponibilidadDeTecnicos = () => {
               </tr>
             ))}
           </tbody>
-        </Table>
+        </Table> */}
         <h4 className="mb-4 tw-font-semibold tw-text-xl">
           Técnicos Disponibles
         </h4>

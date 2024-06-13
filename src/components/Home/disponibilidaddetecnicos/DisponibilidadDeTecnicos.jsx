@@ -61,7 +61,6 @@ const DisponibilidadDeTecnicos = () => {
               <th>Código Técnico</th>
               <th>Experiencia</th>
               <th>Máquinas Arregladas</th>
-              <th>Idioma</th>
               <th>Calificación</th>
               <th>Más Información</th>
             </tr>
@@ -72,7 +71,6 @@ const DisponibilidadDeTecnicos = () => {
               <td>TEC001</td>
               <td>Experto</td>
               <td>25</td>
-              <td>Español</td>
               <td>4.5</td>
               <td>
                 <button className="btn btn-info">Ver Detalles</button>
@@ -83,7 +81,6 @@ const DisponibilidadDeTecnicos = () => {
               <td>TEC002</td>
               <td>Regular</td>
               <td>12</td>
-              <td>Inglés</td>
               <td>3.8</td>
               <td>
                 <button className="btn btn-info">Ver Detalles</button>

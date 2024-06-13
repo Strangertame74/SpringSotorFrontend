@@ -1,7 +1,47 @@
 import React from "react";
 import { Container, Row, Col, Form, Button } from "react-bootstrap";
 import Htopbar from "../Htopbar";
+import { useState } from "react";
 const ReportarIncidencia = () => {
+  const [codigoTec, setCodigoTec] = useState("");
+  const [paterno, setPaterno] = useState("");
+  const [materno, setMaterno] = useState("");
+  const [nombres, setNombres] = useState("");
+  const [usuarioAfectado, setUsuarioAfectado] = useState("");
+  const [telefono, setTelefono] = useState("");
+  const [areaAfectada, setAreaAfectada] = useState("");
+  const [fecha, setFecha] = useState("");
+  const [codigoMaquina, setCodigoMaquina] = useState("");
+  const [hora, setHora] = useState("");
+  const [detalleIncidente, setDetalleIncidente] = useState("");
+  const [correo, setCorreo] = useState("");
+  const [veracidad, setVeracidad] = useState(false);
+  const [imagen, setImagen] = useState("");
+  const handleReport = (e) => {
+    if (!veracidad) {
+      setError(
+        "Debe asegurarse de que toda la información brindada es verídica."
+      );
+      return;
+    }
+    e.preventDefault();
+    const reporte = {
+      codigoTec,
+      paterno,
+      materno,
+      nombres,
+      usuarioAfectado,
+      telefono,
+      areaAfectada,
+      fecha,
+      codigoMaquina,
+      hora,
+      detalleIncidente,
+      correo,
+      imagen,
+    };
+    console.log(reporte);
+  };
   return (
     <>
       <Htopbar />
@@ -13,13 +53,15 @@ const ReportarIncidencia = () => {
           <h2 className="mb-4 tw-font-semibold tw-text-xl">
             Usuario responsable del equipo
           </h2>
-          <Form>
+          <Form onSubmit={(e) => handleReport(e)}>
             <Row className="mb-3">
               <Form.Group as={Col} controlId="formEquipoCodigo">
                 <Form.Label>Código de Equipo</Form.Label>
                 <Form.Control
                   type="text"
                   placeholder="Ingrese código de equipo"
+                  value={codigoTec}
+                  onChange={(e) => setCodigoTec(e.target.value)}
                 />
               </Form.Group>
 
@@ -28,6 +70,8 @@ const ReportarIncidencia = () => {
                 <Form.Control
                   type="text"
                   placeholder="Ingrese apellido paterno"
+                  value={paterno}
+                  onChange={(e) => setPaterno(e.target.value)}
                 />
               </Form.Group>
 
@@ -36,6 +80,8 @@ const ReportarIncidencia = () => {
                 <Form.Control
                   type="text"
                   placeholder="Ingrese apellido materno"
+                  value={materno}
+                  onChange={(e) => setMaterno(e.target.value)}
                 />
               </Form.Group>
             </Row>
@@ -43,7 +89,12 @@ const ReportarIncidencia = () => {
             <Row className="mb-3">
               <Form.Group as={Col} controlId="formNombres">
                 <Form.Label>Nombres</Form.Label>
-                <Form.Control type="text" placeholder="Ingrese nombres" />
+                <Form.Control
+                  type="text"
+                  placeholder="Ingrese nombres"
+                  value={nombres}
+                  onChange={(e) => setNombres(e.target.value)}
+                />
               </Form.Group>
 
               <Form.Group as={Col} controlId="formUsuarioAfectado">
@@ -51,12 +102,19 @@ const ReportarIncidencia = () => {
                 <Form.Control
                   type="text"
                   placeholder="Ingrese usuario afectado"
+                  value={usuarioAfectado}
+                  onChange={(e) => setUsuarioAfectado(e.target.value)}
                 />
               </Form.Group>
 
               <Form.Group as={Col} controlId="formTelefono">
                 <Form.Label>Teléfono</Form.Label>
-                <Form.Control type="text" placeholder="Ingrese teléfono" />
+                <Form.Control
+                  type="text"
+                  placeholder="Ingrese teléfono"
+                  value={telefono}
+                  onChange={(e) => setTelefono(e.target.value)}
+                />
               </Form.Group>
             </Row>
 
@@ -66,6 +124,8 @@ const ReportarIncidencia = () => {
                 <Form.Control
                   type="email"
                   placeholder="Ingrese correo electrónico"
+                  value={correo}
+                  onChange={(e) => setCorreo(e.target.value)}
                 />
               </Form.Group>
             </Row>
@@ -77,12 +137,21 @@ const ReportarIncidencia = () => {
             <Row className="mb-3">
               <Form.Group as={Col} controlId="formAreaAfectada">
                 <Form.Label>Área Afectada</Form.Label>
-                <Form.Control type="text" placeholder="Ingrese área afectada" />
+                <Form.Control
+                  type="text"
+                  placeholder="Ingrese área afectada"
+                  value={areaAfectada}
+                  onChange={(e) => setAreaAfectada(e.target.value)}
+                />
               </Form.Group>
 
               <Form.Group as={Col} controlId="formFecha">
                 <Form.Label>Fecha</Form.Label>
-                <Form.Control type="date" />
+                <Form.Control
+                  type="date"
+                  value={fecha}
+                  onChange={(e) => setFecha(e.target.value)}
+                />
               </Form.Group>
 
               <Form.Group as={Col} controlId="formCodigoMaquina">
@@ -90,12 +159,18 @@ const ReportarIncidencia = () => {
                 <Form.Control
                   type="text"
                   placeholder="Ingrese código de máquina"
+                  value={codigoMaquina}
+                  onChange={(e) => setCodigoMaquina(e.target.value)}
                 />
               </Form.Group>
 
               <Form.Group as={Col} controlId="formHora">
                 <Form.Label>Hora</Form.Label>
-                <Form.Control type="time" />
+                <Form.Control
+                  type="time"
+                  value={hora}
+                  onChange={(e) => setHora(e.target.value)}
+                />
               </Form.Group>
             </Row>
 
@@ -108,6 +183,8 @@ const ReportarIncidencia = () => {
                   as="textarea"
                   rows={3}
                   placeholder="Describa el incidente"
+                  value={detalleIncidente}
+                  onChange={(e) => setDetalleIncidente(e.target.value)}
                 />
               </Form.Group>
             </Row>
@@ -117,7 +194,11 @@ const ReportarIncidencia = () => {
                 <Form.Label className="tw-font-semibold tw-text-xl">
                   Subir foto
                 </Form.Label>
-                <Form.Control type="file" />
+                <Form.Control
+                  type="file"
+                  value={imagen}
+                  onChange={(e) => setImagen(e.target.value)}
+                />
               </Form.Group>
             </Row>
 

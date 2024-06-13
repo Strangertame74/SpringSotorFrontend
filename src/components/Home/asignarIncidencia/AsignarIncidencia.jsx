@@ -1,8 +1,21 @@
-import React from "react";
-import { Button, Form } from "react-bootstrap"; // Importar Button y Form de react-bootstrap
+import { Button, Form, Table } from "react-bootstrap";
 import Htopbar from "../Htopbar";
+import { useEffect, useState } from "react";
+import IncidenciaService from "../../services/IncidenciaService";
 
 const AsignarIncidencia = () => {
+  const [incidencias, setIncidencias] = useState([]);
+
+  useEffect(() => {
+    IncidenciaService.listarIncidencias()
+      .then((response) => {
+        setIncidencias(response.data);
+      })
+      .catch((e) => {
+        console.log(e);
+      });
+  }, []);
+
   return (
     <>
       <Htopbar />
@@ -13,23 +26,46 @@ const AsignarIncidencia = () => {
 
         <div className="mb-4">
           <h2 className="mb-4 tw-font-semibold tw-text-xl">Incidencia</h2>
-          <p>
-            Aquí van los detalles de la incidencia que el usuario ha llenado:
-          </p>
-
-          <div className="mb-3">
-            <p>Detalles de la incidencia:</p>
-          </div>
-
-          <div className="mb-3">
-            <p>Imagen de la incidencia:</p>
-          </div>
+          <Table>
+            <thead>
+              <tr>
+                <th>Id</th>
+                <th>Área Afectada</th>
+                <th>Descripción</th>
+                <th>Fecha</th>
+                <th>Hora</th>
+                <th>Id Equipo</th>
+                <th>Estado del Equipo</th>
+                <th>Código del Equipo</th>
+              </tr>
+            </thead>
+            <tbody>
+              {incidencias.length > 0 ? (
+                incidencias?.map((incidencia) => (
+                  <tr key={incidencia.id_incidencia}>
+                    <td>{incidencia.id_incidencia}</td>
+                    <td>{incidencia.area_afectada}</td>
+                    <td>{incidencia.descripcion}</td>
+                    <td>{incidencia.fecha_incidencia}</td>
+                    <td>{incidencia.hora_incidencia}</td>
+                    <td>{incidencia.equipo_afectado.id_equipo}</td>
+                    <td>{incidencia.equipo_afectado.estado_equipo}</td>
+                    <td>{incidencia.equipo_afectado.codigo}</td>
+                  </tr>
+                ))
+              ) : (
+                <tr>
+                  <td colSpan="8">No hay incidencias disponibles.</td>
+                </tr>
+              )}
+            </tbody>
+          </Table>
         </div>
 
         <div>
           <h2 className="mb-4 tw-font-semibold tw-text-xl">Asignar Técnico</h2>
           <Form>
-            <Form.Group className="mb-3 tw-flex " controlId="codigoTecnico">
+            <Form.Group className="mb-3 tw-flex" controlId="codigoTecnico">
               <Form.Label>Código del Técnico:</Form.Label>
               <Form.Control type="text" />
               <Button variant="dark" className="ms-2">

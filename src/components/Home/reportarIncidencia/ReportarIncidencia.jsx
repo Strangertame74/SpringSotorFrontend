@@ -2,6 +2,7 @@ import React from "react";
 import { Container, Row, Col, Form, Button } from "react-bootstrap";
 import Htopbar from "../Htopbar";
 import { useState } from "react";
+import RegistroService from "../../services/RegistroService";
 const ReportarIncidencia = () => {
   const [idIncidencia, setIncidencia] = useState("");
   const [paterno, setPaterno] = useState("");
@@ -17,7 +18,7 @@ const ReportarIncidencia = () => {
   const [correo, setCorreo] = useState("");
   const [veracidad, setVeracidad] = useState(false);
   const [imagen, setImagen] = useState("");
-  const handleReport = (e) => {
+  const handleReport = async (e) => {
     e.preventDefault();
     if (!veracidad) {
       console.log(
@@ -25,7 +26,7 @@ const ReportarIncidencia = () => {
       );
       return;
     }
-
+    RegistroService.insertarRegistro();
     const reporte = {
       idIncidencia,
       paterno,
@@ -43,7 +44,18 @@ const ReportarIncidencia = () => {
       veracidad,
     };
     console.log(reporte);
+
+    try {
+      const registro = await RegistroService.insertarRegistro(
+        idUsuario,
+        idIncidencia
+      );
+      console.log("Registro creado:", registro);
+    } catch (e) {
+      console.error("Hubo un problema al intentar insertar el registro");
+    }
   };
+
   return (
     <>
       <Htopbar />

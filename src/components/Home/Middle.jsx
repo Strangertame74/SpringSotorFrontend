@@ -19,13 +19,13 @@ const Middle = () => {
         </div>
         <div className="tw-size-96 tw-cursor tw-flex tw-flex-col tw-items-center ">
           <Link
-            to="/diccionario-de-fallas"
+            to="/historial-de-fallas"
             className="tw-size-96 tw-cursor-pointer tw-flex tw-justify-center tw-items-center"
           >
             <img src={diccionario} className="tw-size-72 hover:tw-scale-105" />
           </Link>
           <div className="tw-font-semibold tw-text-xl">
-            Diccionario de Fallas
+            Historial de Fallas{" "}
           </div>
         </div>
 

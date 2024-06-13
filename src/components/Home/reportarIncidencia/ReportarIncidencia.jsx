@@ -3,11 +3,11 @@ import { Container, Row, Col, Form, Button } from "react-bootstrap";
 import Htopbar from "../Htopbar";
 import { useState } from "react";
 const ReportarIncidencia = () => {
-  const [codigoTec, setCodigoTec] = useState("");
+  const [idIncidencia, setIncidencia] = useState("");
   const [paterno, setPaterno] = useState("");
   const [materno, setMaterno] = useState("");
   const [nombres, setNombres] = useState("");
-  const [usuarioAfectado, setUsuarioAfectado] = useState("");
+  const [idUsuario, setIdUsuario] = useState("");
   const [telefono, setTelefono] = useState("");
   const [areaAfectada, setAreaAfectada] = useState("");
   const [fecha, setFecha] = useState("");
@@ -18,19 +18,20 @@ const ReportarIncidencia = () => {
   const [veracidad, setVeracidad] = useState(false);
   const [imagen, setImagen] = useState("");
   const handleReport = (e) => {
+    e.preventDefault();
     if (!veracidad) {
-      setError(
+      console.log(
         "Debe asegurarse de que toda la información brindada es verídica."
       );
       return;
     }
-    e.preventDefault();
+
     const reporte = {
-      codigoTec,
+      idIncidencia,
       paterno,
       materno,
       nombres,
-      usuarioAfectado,
+      idUsuario,
       telefono,
       areaAfectada,
       fecha,
@@ -39,6 +40,7 @@ const ReportarIncidencia = () => {
       detalleIncidente,
       correo,
       imagen,
+      veracidad,
     };
     console.log(reporte);
   };
@@ -56,12 +58,12 @@ const ReportarIncidencia = () => {
           <Form onSubmit={(e) => handleReport(e)}>
             <Row className="mb-3">
               <Form.Group as={Col} controlId="formEquipoCodigo">
-                <Form.Label>Código de Equipo</Form.Label>
+                <Form.Label>Id Incidencia</Form.Label>
                 <Form.Control
                   type="text"
                   placeholder="Ingrese código de equipo"
-                  value={codigoTec}
-                  onChange={(e) => setCodigoTec(e.target.value)}
+                  value={idIncidencia}
+                  onChange={(e) => setIncidencia(e.target.value)}
                 />
               </Form.Group>
 
@@ -98,12 +100,12 @@ const ReportarIncidencia = () => {
               </Form.Group>
 
               <Form.Group as={Col} controlId="formUsuarioAfectado">
-                <Form.Label>Usuario Afectado</Form.Label>
+                <Form.Label>Id Usuario</Form.Label>
                 <Form.Control
                   type="text"
                   placeholder="Ingrese usuario afectado"
-                  value={usuarioAfectado}
-                  onChange={(e) => setUsuarioAfectado(e.target.value)}
+                  value={idUsuario}
+                  onChange={(e) => setIdUsuario(e.target.value)}
                 />
               </Form.Group>
 
@@ -206,6 +208,8 @@ const ReportarIncidencia = () => {
               <Form.Check
                 type="checkbox"
                 label="Aseguro que toda la información brindada es verídica"
+                checked={veracidad}
+                onChange={(e) => setVeracidad(e.target.checked)}
               />
             </Form.Group>
 

@@ -1,6 +1,7 @@
 import { Button, Form, Table } from "react-bootstrap";
 import Htopbar from "../Htopbar";
 import { useEffect, useState } from "react";
+import "bootstrap/dist/css/bootstrap.min.css";
 import IncidenciaService from "../../services/IncidenciaService";
 
 const AsignarIncidencia = () => {
@@ -48,9 +49,9 @@ const AsignarIncidencia = () => {
                     <td>{incidencia.descripcion}</td>
                     <td>{incidencia.fecha_incidencia}</td>
                     <td>{incidencia.hora_incidencia}</td>
-                    <td>{incidencia.equipo_afectado.id_equipo}</td>
-                    <td>{incidencia.equipo_afectado.estado_equipo}</td>
-                    <td>{incidencia.equipo_afectado.codigo}</td>
+                    <td>{incidencia.equipo_afectado?.id_equipo}</td>
+                    <td>{incidencia.equipo_afectado?.estado_equipo}</td>
+                    <td>{incidencia.equipo_afectado?.codigo}</td>
                   </tr>
                 ))
               ) : (

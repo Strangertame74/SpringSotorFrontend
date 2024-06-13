@@ -8,28 +8,53 @@ const Middle = () => {
   return (
     <div className="tw-container tw-mx-auto tw-mt-20">
       <div className="tw-grid tw-grid-cols-2 tw-place-items-center">
-        <Link to="/asignar-incidencia" className="tw-size-96 tw-cursor-pointer">
-          <img src={asignarIn} />
-        </Link>
+        <div className="tw-size-96 tw-cursor tw-flex tw-flex-col tw-items-center ">
+          <Link
+            to="/asignar-incidencia"
+            className="tw-size-96 tw-cursor-pointer tw-flex tw-justify-center tw-items-center"
+          >
+            <img src={asignarIn} className="tw-size-72 hover:tw-scale-105" />
+          </Link>
+          <div className="tw-font-semibold tw-text-xl">Asignar Incidencia</div>
+        </div>
+        <div className="tw-size-96 tw-cursor tw-flex tw-flex-col tw-items-center ">
+          <Link
+            to="/diccionario-de-fallas"
+            className="tw-size-96 tw-cursor-pointer tw-flex tw-justify-center tw-items-center"
+          >
+            <img src={diccionario} className="tw-size-72 hover:tw-scale-105" />
+          </Link>
+          <div className="tw-font-semibold tw-text-xl">
+            Diccionario de Fallas
+          </div>
+        </div>
 
-        <Link
-          to="/diccionario-de-fallas"
-          className="tw-size-96 tw-cursor-pointer"
-        >
-          <img src={diccionario} />
-        </Link>
-        <Link
-          to="/reportar-incidencia"
-          className="tw-size-96 tw-cursor-pointer"
-        >
-          <img src={reportar} alt="Reportar" />
-        </Link>
-        <Link
-          to="/disponibilidad-de-tecnicos"
-          className="tw-size-96 tw-flex tw-items-center tw-justify-center tw-cursor-pointer"
-        >
-          <img className="" src={tecnico} />
-        </Link>
+        <div className="tw-size-96 tw-cursor tw-flex tw-flex-col tw-items-center ">
+          <Link
+            to="/reportar-incidencia"
+            className="tw-size-96 tw-cursor-pointer tw-flex tw-justify-center tw-items-center"
+          >
+            <img
+              src={reportar}
+              alt="Reportar"
+              className="tw-size-72 hover:tw-scale-105"
+            />
+          </Link>
+          <div className="tw-font-semibold tw-text-xl">
+            Reportar Incidencias
+          </div>
+        </div>
+        <div className="tw-size-96 tw-cursor tw-flex tw-flex-col tw-items-center ">
+          <Link
+            to="/disponibilidad-de-tecnicos"
+            className="tw-size-96 tw-cursor-pointer tw-flex tw-justify-center tw-items-center"
+          >
+            <img src={tecnico} className="tw-size-72 hover:tw-scale-105" />
+          </Link>
+          <div className="tw-font-semibold tw-text-xl">
+            Disponibilidad de Técnicos
+          </div>
+        </div>
       </div>
     </div>
   );

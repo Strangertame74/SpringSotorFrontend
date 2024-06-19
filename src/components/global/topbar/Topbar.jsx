@@ -1,9 +1,9 @@
 import { Navbar, Nav, Container } from "react-bootstrap";
 import { FaUser } from "react-icons/fa";
 import { Link } from "react-router-dom";
-import "./htopbar.css";
+import "./topbar.css";
 
-const Htopbar = () => {
+const Topbar = () => {
   return (
     <div>
       <Navbar bg="dark" variant="dark">
@@ -38,4 +38,4 @@ const Htopbar = () => {
   );
 };
 
-export default Htopbar;
+export default Topbar;

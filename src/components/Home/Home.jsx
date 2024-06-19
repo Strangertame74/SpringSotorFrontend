@@ -1,5 +1,5 @@
-import Htopbar from "./Htopbar";
-import Middle from "./Middle";
+import Htopbar from "../global/topbar/Topbar";
+import Middle from "./central/Middle";
 const Home = () => {
   return (
     <>

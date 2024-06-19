@@ -1,8 +1,8 @@
 import React from "react";
-import asignarIn from "../../assets/asignarIn.jpg";
-import diccionario from "../../assets/diccionario.jpg";
-import reportar from "../../assets/reportar.jpg";
-import tecnico from "../../assets/tecnico.png";
+import asignarIn from "../../../assets/asignarIn.jpg";
+import diccionario from "../../../assets/diccionario.jpg";
+import reportar from "../../../assets/reportar.jpg";
+import tecnico from "../../../assets/tecnico.png";
 import { Link } from "react-router-dom";
 const Middle = () => {
   return (

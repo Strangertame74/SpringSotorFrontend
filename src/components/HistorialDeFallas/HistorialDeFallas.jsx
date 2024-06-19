@@ -1,6 +1,6 @@
 import React from "react";
 import { Button, Form, Table } from "react-bootstrap"; // Importar Button, Form y Table de react-bootstrap
-import Htopbar from "../Htopbar";
+import Htopbar from "../global/topbar/Topbar";
 import InformeTecnicoService from "../../services/InformeTecnicoService";
 import { useState, useEffect } from "react";
 const HistorialDeFallas = () => {

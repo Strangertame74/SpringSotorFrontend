@@ -3,11 +3,12 @@ import Home from "./components/Home/Home";
 import { Routes, Route } from "react-router-dom";
 import Login from "./components/login/Login";
 import Signup from "./components/signup/Signup";
-import ReportarIncidencia from "./components/Home/reportarIncidencia/ReportarIncidencia";
-import AsignarIncidencia from "./components/Home/asignarIncidencia/AsignarIncidencia";
+import ReportarIncidencia from "./components/reportarIncidencia/ReportarIncidencia";
+import AsignarIncidencia from "./components/asignarIncidencia/AsignarIncidencia";
 
-import DisponibilidadDeTecnicos from "./components/Home/disponibilidaddetecnicos/DisponibilidadDeTecnicos";
-import HistorialDeFallas from "./components/Home/diccionariodefallas/HistorialDeFallas";
+import DisponibilidadDeTecnicos from "./components/disponibilidaddetecnicos/DisponibilidadDeTecnicos";
+import HistorialDeFallas from "./components/HistorialDeFallas/HistorialDeFallas";
+import AsignarTecnico from "./components/asignarIncidencia/asignarTecnico/AsignarTecnico";
 function App() {
   return (
     <>
@@ -22,6 +23,7 @@ function App() {
           path="/disponibilidad-de-tecnicos"
           element={<DisponibilidadDeTecnicos />}
         />
+        <Route path="/asignar-tecnico" element={<AsignarTecnico />} />
       </Routes>
     </>
   );

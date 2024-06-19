@@ -1,6 +1,6 @@
 import React from "react";
 import { Container, Row, Col, Form, Button } from "react-bootstrap";
-import Htopbar from "../Htopbar";
+import Topbar from "../global/topbar/Topbar";
 import { useState } from "react";
 import RegistroService from "../../services/RegistroService";
 const ReportarIncidencia = () => {
@@ -58,7 +58,7 @@ const ReportarIncidencia = () => {
 
   return (
     <>
-      <Htopbar />
+      <Topbar />
       <div className="tw-bg-white">
         <Container className="mt-5">
           <h1 className="tw-text-center tw-text-4xl tw-font-bold tw-mb-4">
